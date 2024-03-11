@@ -1,18 +1,45 @@
-def find_common_elements(list1, list2):
-    set1 = set(list1)# Convert lists to sets to find the common elements
-    set2 = set(list2)
-    common_elements = set1.intersection(set2)# Find the intersection of the sets (common elements)
-    # Return the number of common elements
-    return len(common_elements)
+def matrix_multiply(A, B):
+    rows_A,cols_A=len(A),len(A[0])
+    rows_B,cols_B=len(B),len(B[0]) 
+    if cols_A!=rows_B:       # Check if matrices are multiplicatable
+        return "Error: Matrices are not multiplicatable."
+    result=[[0 for i1 in range(cols_B)] for i2 in range(rows_A)] # Initialize result matrix with zeros
 
+    # Perform matrix multiplication
+    for i in range(rows_A):
+        for j in range(cols_B):
+            for k in range(cols_A):
+                result[i][j] += A[i][k] * B[k][j]
+
+    return result
 
 if __name__ == "__main__":
-    # Example lists
-    list1 = [2,4,6,7,9]
-    list2 = [2,5,4,3,6]
+    # Example matrices
+    A = [
+        [1, 2,3],
+        [4, 5, 6],
+    ]
 
-    # Call the find_common_elements function
-    result = find_common_elements(list1, list2)
+    B = [
+        [7, 8],
+        [9, 10],
+        [11, 12],
+    ]
 
-    # Print the result
-    print(f"Number of common elements: {result}")
+    
+    result = matrix_multiply(A, B)   # Call the matrix_multiply function
+    if isinstance(result, str):# Check the result and print accordingly
+        print(result)
+    else:
+        print("Matrix A:")
+        for row in A:
+            print(row)
+            print(type(result))
+
+        print("\nMatrix B:")
+        for row in B:
+            print(row)
+
+        print("\nProduct of is AB:")
+        for row in result:
+            print(row)
