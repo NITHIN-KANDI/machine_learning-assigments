@@ -3,9 +3,9 @@ def transpose_matrix(matrix):
     transposed_matrix = []
 
     # Iterate through each column of the original matrix
-    for col in range(len(matrix[0])):
+    for col_index in range(len(matrix[0])):
         # Create a transposed row by taking elements from each row in the original matrix corresponding to the current column
-        transposed_row = [matrix[row][col] for row in range(len(matrix))]
+        transposed_row = [matrix[row_index][col_index] for row_index in range(len(matrix))]
         
         # Append the transposed row to the transposed matrix
         transposed_matrix.append(transposed_row)
