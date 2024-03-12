@@ -1,45 +1,21 @@
-def matrix_multiply(A, B):
-    rows_A,cols_A=len(A),len(A[0])
-    rows_B,cols_B=len(B),len(B[0]) 
-    if cols_A!=rows_B:       # Check if matrices are multiplicatable
-        return "Error: Matrices are not multiplicatable."
-    result=[[0 for i1 in range(cols_B)] for i2 in range(rows_A)] # Initialize result matrix with zeros
-
-    # Perform matrix multiplication
-    for i in range(rows_A):
-        for j in range(cols_B):
-            for k in range(cols_A):
-                result[i][j] += A[i][k] * B[k][j]
-
-    return result
-
-if __name__ == "__main__":
-    # Example matrices
-    A = [
-        [1, 2,3],
-        [4, 5, 6],
-    ]
-
-    B = [
-        [7, 8],
-        [9, 10],
-        [11, 12],
-    ]
-
+def commondigits(in_list1, in_list2):
+    # Convert input lists to sets to remove duplicate elements and enable set operations
+    list1 = set(in_list1)
+    list2 = set(in_list2)
     
-    result = matrix_multiply(A, B)   # Call the matrix_multiply function
-    if isinstance(result, str):# Check the result and print accordingly
-        print(result)
-    else:
-        print("Matrix A:")
-        for row in A:
-            print(row)
-            print(type(result))
+    # Find the common elements between the sets
+    common_digits = list1.intersection(list2)
+    
+    # Return the count of common elements
+    return len(common_digits)
 
-        print("\nMatrix B:")
-        for row in B:
-            print(row)
+# Example lists
+list1 = [5, 4, 3, 6, 7]
+list2 = [1, 2, 3, 4, 5]
 
-        print("\nProduct of is AB:")
-        for row in result:
-            print(row)
+print("The first list is:", list1)
+print("The second list is:", list2)
+
+# Call the function and print the result
+common_digit_count = commondigits(list1, list2)
+print("The count of common elements:", common_digit_count)
